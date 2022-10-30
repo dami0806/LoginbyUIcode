@@ -201,6 +201,8 @@ final class ViewController: UIViewController {
 
     
     // MARK: - 비밀번호 가리기 모드 켜고 끄기
+    
+    //셀렉터 설정
     @objc private func passwordSecureModeSetting() {
         // 이미 텍스트필드에 내장되어 있는 기능
         passwordTextField.isSecureTextEntry.toggle()
@@ -214,7 +216,7 @@ final class ViewController: UIViewController {
     
     // 리셋버튼이 눌리면 동작하는 함수
     @objc func resetButtonTapped() {
-        //만들기
+        
         let alert = UIAlertController(title: "비밀번호 바꾸기", message: "비밀번호를 바꾸시겠습니까?", preferredStyle: .alert)
         let success = UIAlertAction(title: "확인", style: .default) { action in
             print("확인버튼이 눌렸습니다.")
@@ -222,15 +224,28 @@ final class ViewController: UIViewController {
         let cancel = UIAlertAction(title: "취소", style: .cancel) { action in
             print("취소버튼이 눌렸습니다.")
         }
-        
         alert.addAction(success)
         alert.addAction(cancel)
+        //다음화면으로 넘어가기
+        present(alert,animated: true, completion: nil)
         
-        // 실제 띄우기
-        self.present(alert, animated: true, completion: nil)
+//        //만들기
+//        let alert = UIAlertController(title: "비밀번호 바꾸기", message: "비밀번호를 바꾸시겠습니까?", preferredStyle: .alert)
+//        let success = UIAlertAction(title: "확인", style: .default) { action in
+//            print("확인버튼이 눌렸습니다.")
+//        }
+//        let cancel = UIAlertAction(title: "취소", style: .cancel) { action in
+//            print("취소버튼이 눌렸습니다.")
+//        }
+//
+//        alert.addAction(success)
+//        alert.addAction(cancel)
+//
+//        // 실제 띄우기
+//        self.present(alert, animated: true, completion: nil)
     }
     
-    // 앱의 화면을 터치하면 동작하는 함수
+    // 앱의 화면을 터치하면 키보드내리는 동작하는 함수
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
